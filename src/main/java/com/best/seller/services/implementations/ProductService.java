@@ -58,10 +58,6 @@ public class ProductService implements IProductService {
             Integer cartonSize = product.getCartonSize();
             Double price = product.getPrice();
 
-//            laborMultiplier;
-//            discountMultiplier;
-//            discountCartonLimit;
-
             for (int i = 1; i <= 50; i++) {
                 responseList.add(calculatePrice(price, cartonSize, i));
             }
@@ -114,7 +110,7 @@ public class ProductService implements IProductService {
         return response;
     }
 
-    private Double calculatePrice(Double cartonPrice, Integer cartonSize, int unitCount) {// todo caching
+    private Double calculatePrice(Double cartonPrice, Integer cartonSize, int unitCount) {
         int cartonCount = unitCount / cartonSize;
         Integer remainUnitCount = unitCount % cartonSize;
 
@@ -123,6 +119,6 @@ public class ProductService implements IProductService {
             price = price * discountMultiplier;
         }
         price = price + (cartonPrice * remainUnitCount * laborMultiplier / cartonSize);
-        return price; // todo decimal point limitting
+        return price;
     }
 }
