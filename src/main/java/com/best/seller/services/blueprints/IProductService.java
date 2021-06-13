@@ -30,7 +30,6 @@ public interface IProductService {
      * @return the price list
      * @throws EntityNotFoundException the entity not found exception
      */
-    // todo transactional
     List<Double> getPriceList(String key) throws EntityNotFoundException;
 
     /**
