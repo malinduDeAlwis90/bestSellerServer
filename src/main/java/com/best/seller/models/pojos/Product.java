@@ -26,7 +26,7 @@ public class Product implements Serializable {
     private Long id;
 
     @Column(unique=true)
-    private String key; // todo not null , key.maya
+    private String key;
 
     private String name;
 

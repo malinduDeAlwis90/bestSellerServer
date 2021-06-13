@@ -22,7 +22,7 @@ import java.util.Map;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProductController {
 
-    private final ProductService productService; // todo hateos
+    private final ProductService productService;
 
     /**
      * Instantiates a new Product controller.
@@ -42,10 +42,9 @@ public class ProductController {
     public ResponseEntity<List<Double>> getPriceList(@PathVariable String key) {
         log.info("Incoming price list request. Key: " + key);
         List<Double> priceList = productService.getPriceList(key);
-//        EntityModel<BankProductResponse> entityModel = bankResponseModelAssembler.toModel(savedProduct);
         log.info("Price list successfully received. Returning");
 
-        return ResponseEntity.ok(priceList); // todo
+        return ResponseEntity.ok(priceList);
     }
 
     /**
@@ -53,18 +52,17 @@ public class ProductController {
      *
      * @return the response entity
      */
-    @PostMapping("/price") // todo
-    public ResponseEntity<Double> getPrice(@RequestBody PriceRequest request) { // todo request validation
+    @PostMapping("/price")
+    public ResponseEntity<Double> getPrice(@RequestBody PriceRequest request) {
         String key = request.getKey();
         Integer cartonCount = request.getCartonCount();
         Integer unitCount = request.getUnitCount();
 
         log.info("Incoming price request. Key: {}, cartonCount: {}, unitCount: {}", key, cartonCount, unitCount);
         Double price = productService.getPrice(key, cartonCount, unitCount);
-//        EntityModel<BankProductResponse> entityModel = bankResponseModelAssembler.toModel(savedProduct);
         log.info("Price successfully received. Returning");
 
-        return ResponseEntity.ok(price); // todo
+        return ResponseEntity.ok(price);
     }
 
     /**
