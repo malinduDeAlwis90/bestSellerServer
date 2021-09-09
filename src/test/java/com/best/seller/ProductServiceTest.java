@@ -50,7 +50,7 @@ public class ProductServiceTest {
         Product product = productDataPopulator.getProduct();
         String key = product.getKey();
 
-        when( productRepository.findByKey(key)).thenReturn(product);
+        when(productRepository.findByKey(key)).thenReturn(product);
 
         List<Double> response = productService.getPriceList(key);
 
